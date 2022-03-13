@@ -22,6 +22,7 @@ e = iter([1, 2, 3])
 print(next(e))
 print(next(e))
 print(next(e))
+print(next(e))   # StopIteration 예외 발생
 
 
 # generator : iterator를 생성해주는 함수로 yield 키워드 사용
