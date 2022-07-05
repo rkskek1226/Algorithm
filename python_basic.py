@@ -125,6 +125,9 @@ print(s1.isalnum())
 print(s1.isalpha())
 
 
+# lambda(익명 함수)
+# def 함수이름(매개변수): return 결과   ->   lambda 매개변수: 결과
+
 
 
 
