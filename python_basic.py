@@ -1,5 +1,7 @@
 import collections
 
+# 스네이크 케이스를 사용( apple_price )
+
 # 타입 명시하는 방법
 a: str = "1"
 b: int = 1
@@ -59,10 +61,16 @@ sample3()
 # 비교 연산자 is는 id() 값을 비교하고 ==는 값을 비교함
 
 # mutable object : list, set, dict
-# immutable object : bool, int, float, tuple, str,
+# immutable object : bool, int, float, tuple, str
 
-# 리스트에서 append()로 추가하거나 pop()으로 마지막 요소를 추출하거나 조회하는 것은 O(1)
-# 리스트에서 요소를 삭제하거나 첫번째 요소를 추출하는 pop(0)은 O(n)
+# a = [1, 2]
+# a == copy.deepcopy(a)   -> True
+# a is copy.deepcopy(a)   -> False
+
+# 리스트에서 append(), pop(), index()는 O(1)
+# 리스트에서 del이나 pop(0), min(), max(), reverse()는 O(n)
+# 리스트에서 sort()는 O(n logn)
+# 리스트에서 sort, reverse()는 자체를 변경하고 None을 리턴
 l1 = list()
 l2 = []
 l3 = [1, 2, 3]
@@ -109,8 +117,12 @@ print(d5.most_common(3))   # 빈도 수가 높은 요소를 추출
 d6 = collections.OrderedDict({"A": 1, "B": 3, "C": 2})
 
 
-# isalnum() : 영어와 숫자로 구성되었는지 판별
-
+# isalnum() : 영어나 한글, 숫자로 구성되었으면 True
+# isalpha() : 영어나 한글로 구성되었으면 True
+s1 = "qwer"
+s2 = "q1w2"
+print(s1.isalnum())
+print(s1.isalpha())
 
 
 
