@@ -129,7 +129,18 @@ print(s1.isalpha())
 # def 함수이름(매개변수): return 결과   ->   lambda 매개변수: 결과
 
 
+# sort()는 자체 정렬로 리턴 없음
+# a = [3, 4, 1]
+# b = a.sort()
+# print(a)   # [1, 3, 4]
+# print(b)   # None
 
+# sorted()는 정렬 후 리스트로 리턴
+# a = [3, 4, 1]
+# b = sorted(a)
+# c = "zbqsga"
+# d = sorted(c)
+# e = "".join(sorted(c))   # 정렬 후 다시 문자열로 결합
 
 
 

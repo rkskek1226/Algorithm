@@ -56,6 +56,7 @@ def reverseString(self, s: List[str]) -> None:
         right -= 1
 
 
+
 # 로그파일 재정렬
 def reorderLogFiles(self, logs: List[str]) -> List[str]:
     letters_log, digits_log = [], []
@@ -67,5 +68,29 @@ def reorderLogFiles(self, logs: List[str]) -> List[str]:
 
     letters_log.sort(key=lambda x: (x.split(" ")[1:], x.split(" ")[0]))
     return letters_log + digits_log
+
+
+
+# 가장 흔한 단어
+def mostCommonWord(paragraph: str, banned: List[str]) -> str:
+    s = re.sub(r"[^\w]", " ", paragraph)
+    tmp_l = s.lower().split(" ")
+    l = []
+    for word in tmp_l:
+        if len(word) > 0 and word not in banned:
+            l.append(word)
+    d = collections.Counter(l)
+    return d.most_common(1)[0][0]
+
+
+
+# 그룹 에너그램
+def groupAnagrams(strs: List[str]) -> List[List[str]]:
+    result = collections.defaultdict(list)
+
+    for word in strs:
+        result["".join(sorted(word))].append(word)
+
+    return list(result.values())
 
 
