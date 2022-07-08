@@ -137,10 +137,10 @@ print(s1.isalpha())
 
 # sorted()는 정렬 후 리스트로 리턴
 # a = [3, 4, 1]
-# b = sorted(a)
+# b = sorted(a)   # [1, 3, 4]
 # c = "zbqsga"
-# d = sorted(c)
-# e = "".join(sorted(c))   # 정렬 후 다시 문자열로 결합
+# d = sorted(c)   # ["a", "b", "g", "q", "s", "z"]
+# e = "".join(sorted(c))   # 정렬 후 다시 문자열로 결합, "abgqsz"
 
 
 
