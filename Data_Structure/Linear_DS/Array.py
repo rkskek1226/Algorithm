@@ -24,6 +24,58 @@ def twoSum(nums: List[int], target: int) -> List[int]:
 
 
 
+# 세 수의 합
+# 1. 브루트 포스( O(n^3), 시간 제한 걸림 )
+def threeSum(nums: List[int]) -> List[List[int]]:
+    result = []
+    nums.sort()
+
+    for a in range(len(nums) - 2):
+        if a > 0 and nums[a] == nums[a - 1]:
+            continue
+        for b in range(a + 1, len(nums) - 1):
+            if b > a + 1 and nums[b] == nums[b - 1]:
+                continue
+            for c in range(b + 1, len(nums)):
+                if c > b + 1 and nums[c] == nums[c - 1]:
+                    continue
+                if nums[a] + nums[b] + nums[c] == 0:
+                    result.append([nums[a], nums[b], nums[c]])
+
+    return result
+
+
+# 2. 투 포인터( O(n^2), 시간 제한 안걸림 )
+def threeSum(nums: List[int]) -> List[List[int]]:
+    result = []
+    nums.sort()
+
+    for i in range(len(nums) - 2):
+
+        if i > 0 and nums[i] == nums[i - 1]:
+            continue
+
+        left, right = i + 1, len(nums) - 1
+
+        while left < right:
+            if nums[i] + nums[left] + nums[right] == 0:
+                result.append([nums[i], nums[left], nums[right]])
+                while left < right and nums[left] == nums[left + 1]:
+                    left += 1
+                while left < right and nums[right] == nums[right - 1]:
+                    right -= 1
+                left += 1
+                right -= 1
+            elif nums[i] + nums[left] + nums[right] > 0:
+                right -= 1
+            else:
+                left += 1
+
+    return result
+
+
+
+
 
 
 
