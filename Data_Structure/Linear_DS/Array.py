@@ -75,6 +75,21 @@ def threeSum(nums: List[int]) -> List[List[int]]:
 
 
 
+# 배열 파티션 1
+# 1. 오름차순 풀이
+def arrayPairSum(nums: List[int]) -> int:
+    nums.sort()
+    sum = 0
+
+    for i in range(0, len(nums), 2):
+        sum += min(nums[i], nums[i + 1])
+
+    return sum
+
+
+# 2. 파이썬다운 풀이
+def arrayPairsum(nums: List[int]) -> int:
+    return sum(sorted(nums)[::2])
 
 
 
