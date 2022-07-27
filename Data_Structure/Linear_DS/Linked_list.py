@@ -34,8 +34,8 @@ class Node:
 
 class DoubleLinkedList:
     def __init__(self):
-        self.head = Node()
-        self.tail = Node()
+        self.head = Node("head")
+        self.tail = Node("tail")
 
         self.head.next = self.tail
         self.tail.prev = self.head
@@ -73,10 +73,23 @@ class DoubleLinkedList:
 
     def insert_after(self, data, node):
         new_node = Node(data)
-        pass
+        new_node.prev = node
+        new_node.next = node.next
+
+        node.next.prev = new_node
+        node.next = new_node
+
+        self.size += 1
 
     def insert_before(self, data, node):
-        pass
+        new_node = Node(data)
+        new_node.prev = node.prev
+        new_node.next = node
+
+        node.prev.next = new_node
+        node.prev = new_node
+
+        self.size += 1
 
     def search_forward(self, target):
         cur = self.head.next
@@ -96,11 +109,81 @@ class DoubleLinkedList:
             cur = cur.prev
         return None
 
+    def show_forward(self):
+        cur = self.head.next
+
+        while cur is not self.tail:
+            print(cur.data, end=" ")
+            cur = cur.next
+
+        print("")
+
+    def show_backward(self):
+        cur = self.tail.prev
+
+        while cur is not self.head:
+            print(cur.data, end=" ")
+            cur = cur.prev
+
+        print()
+
     def delete_first(self):
-        pass
+        if self.is_empty():
+            return False
+
+        self.head.next = self.head.next.next
+        self.head.next.prev = self.head
+
+        self.size -= 1
 
     def delete_last(self):
-        pass
+        if self.is_empty():
+            return False
+
+        self.tail.prev = self.tail.prev.prev
+        self.tail.prev.next = self.tail
+
+        self.size -= 1
 
     def delete_node(self, node):
-        pass
+        node.prev.next = node.next
+        node.next.prev = node.prev
+
+        self.size -= 1
+
+
+dl = DoubleLinkedList()
+print("1 삽입")
+dl.add_first(1)
+dl.show_forward()
+print("2 삽입")
+dl.insert_after(2, dl.search_forward(1))
+dl.show_forward()
+print("3 삽입")
+dl.insert_after(3, dl.search_forward(2))
+dl.show_forward()
+print("5 삽입")
+dl.add_last(5)
+dl.show_forward()
+print("4 삽입")
+dl.insert_before(4, dl.search_backward(5))
+dl.show_forward()
+dl.show_backward()
+
+print("1 삭제")
+dl.delete_first()
+dl.show_forward()
+print("5 삭제")
+dl.delete_last()
+dl.show_forward()
+dl.show_backward()
+print("3 삭제")
+dl.delete_node(dl.search_forward(3))
+print(dl.show_forward())
+print(dl.show_backward())
+
+print("finish\n\n")
+
+
+
+
