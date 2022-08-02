@@ -1,3 +1,4 @@
+# 리스트로 큐를 구현
 class Queue:
     def __init__(self):
         self.queue = list()
@@ -19,7 +20,6 @@ class Queue:
         self.queue.append(data)
         # self.rear += 1
 
-
     def dequeue(self):
         if self.is_empty():
             return False
@@ -37,18 +37,38 @@ class Queue:
         print()
 
 
-q = Queue()
-q.enqueue(1)
-q.show()
-q.enqueue(2)
-q.show()
-q.enqueue(3)
-q.show()
-q.enqueue(4)
-q.show()
-q.enqueue(5)
-q.show()
-print("peek : {}".format(q.peek()))
-print("dequeue : {}".format(q.dequeue()))
-q.show()
+# q = Queue()
+# q.enqueue(1)
+# q.show()
+# q.enqueue(2)
+# q.show()
+# q.enqueue(3)
+# q.show()
+# print("peek : {}".format(q.peek()))
+# print("dequeue : {}".format(q.dequeue()))
+# q.show()
+
+
+# collections 모듈의 dequeue 클래스로 구현
+from collections import deque
+
+queue = deque()
+queue.append(0)
+queue.append(1)
+queue.append(2)
+print(queue)
+print(queue.popleft())
+print(queue)
+
+
+# queue 모듈의 Queue 클래스로 구현
+from queue import Queue
+
+queue = Queue()
+queue.put(0)
+queue.put(1)
+queue.put(2)
+print(queue)
+print(queue.get())
+print(queue)
 
