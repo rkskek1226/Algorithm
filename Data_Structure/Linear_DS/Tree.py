@@ -1,4 +1,5 @@
 from Stack import Stack  # 순회를 구현하기 위함
+from collections import deque   # 레벨 순서 순회를 구현하기 위함
 
 
 class TreeNode:
@@ -92,6 +93,21 @@ def postorder1(cur):
     print(cur.data, end=" ")
 
 
+def levelorder(cur):
+    q = deque()
+    q.append(cur)
+
+    while q:
+        cur = q.popleft()
+        print(cur.data, end=" ")
+
+        if cur.left:
+            q.append(cur.left)
+
+        if cur.right:
+            q.append(cur.right)
+
+
 if __name__ == "__main__":
     n1 = TreeNode(1)
     n2 = TreeNode(2)
@@ -118,6 +134,7 @@ if __name__ == "__main__":
     print()
     postorder1(n1)
     print()
+    levelorder(n1)
 
 
 

@@ -1,5 +1,5 @@
 from queue import Queue
-import Stack
+
 
 class Graph:
     def __init__(self, vertex_num):
