@@ -1,10 +1,10 @@
-class Circular_Queue:
-    MAX_SIZE = 10
+class CircularQueue:
+    MAX_SIZE = 6
 
     def __init__(self):
-        self.cqueue = [None for _ in range(Circular_Queue.MAX_SIZE)]
-        self.front = 0   # 가장 앞에있는 데이터의 전을 가리킴
-        self.rear = 0   
+        self.list = [None for _ in range(CircularQueue.MAX_SIZE)]
+        self.front = 0
+        self.rear = 0   # 맨 마지막 데이터의 다음을 가리킴
 
     def is_empty(self):
         if self.front == self.rear:
@@ -13,40 +13,41 @@ class Circular_Queue:
             return False
 
     def is_full(self):
-        if (self.rear + 1) % self.MAX_SIZE == self.front:
+        tmp = self.rear
+        tmp += 1
+        if tmp >= CircularQueue.MAX_SIZE:
+            tmp = 0
+        if tmp == self.front:
             return True
         else:
             return False
 
-    def enqueue(self, data):
-        if self.is_full():
-            return False
-        else:
-            self.rear = (self.rear + 1) % self.MAX_SIZE
-            self.cqueue[self.rear] = data
+    def enqueue(self, x):
+        if not self.is_full():
+            self.list[self.rear] = x
+            self.rear += 1
+            if self.rear >= CircularQueue.MAX_SIZE:
+                self.rear = 0
 
     def dequeue(self):
-        if self.is_empty():
-            return False
-        else:
-            self.front = (self.front + 1) % self.MAX_SIZE
-            return self.cqueue[self.front]
-
-    def peek(self):
-        if self.is_empty():
-            return False
-        else:
-            return self.cqueue[self.front]
+        if not self.is_empty():
+            tmp = self.list[self.front]
+            self.front += 1
+            if self.front >= CircularQueue.MAX_SIZE:
+                self.front = 0
+            return tmp
 
     def show(self):
         i = self.front
         while i is not self.rear:
-            i = (i + 1) % self.MAX_SIZE
-            print(self.cqueue[i], end=" ")
-        print("     front : {}, rear : {}".format(self.front, self.rear))
+            print("{}".format(self.list[i]), end=" ")
+            i += 1
+            if i >= CircularQueue.MAX_SIZE:
+                i = 0
+        print()
 
 
-cq = Circular_Queue()
+cq = CircularQueue()
 cq.enqueue(0)
 cq.show()
 cq.enqueue(1)
@@ -57,20 +58,13 @@ cq.enqueue(3)
 cq.show()
 cq.enqueue(4)
 cq.show()
+cq.dequeue()
+cq.show()
 cq.enqueue(5)
 cq.show()
-cq.enqueue(6)
-cq.show()
-cq.enqueue(7)
-cq.show()
-cq.dequeue()
-cq.show()
-cq.dequeue()
-cq.show()
-cq.enqueue(8)
-cq.show()
-cq.enqueue(9)
-cq.show()
-cq.enqueue(10)
-cq.show()
+
+
+
+
+
 
