@@ -104,11 +104,13 @@ class BST:
 
     def make_left(self, cur, left):
         cur.left = left
-        left.parent = cur
+        if left:
+            left.parent = cur
 
     def make_right(self, cur, right):
         cur.right = right
-        right.parent = cur
+        if right:
+            right.parent = cur
 
     def insert(self, key):
         new_node = TreeNode(key)
@@ -151,55 +153,10 @@ class BST:
             cur = cur.left
         return cur
 
-    # def delete(self, target):   # 리프 노드인지, 자식 노드가 1개인지, 자식 노드가 2개인지에 따라 다 방법이 다름
-    #     cur = self.root
-    #
-    #     if not cur:
-    #         return None
-    #
-    #     while cur:   # 삭제할 노드를 찾음
-    #         if cur.key == target:
-    #             break
-    #         elif cur.key < target:
-    #             cur = cur.right
-    #         else:
-    #             cur = cur.left
-    #
-    #     if not cur.left and not cur.right:   # 리프 노드인 경우
-    #         # if cur.parent.left == cur:
-    #         #     cur.parent.left = None
-    #         # else:
-    #         #     cur.parent.right = None
-    #         cur = None
-    #
-    #     elif cur.left is None:   # 왼쪽 자식이 없는 경우
-    #         self.make_right(cur.parent, cur.right)
-    #     elif cur.right is None:   # 오른쪽 자식이 없는 경우
-    #         self.make_left(cur.parent, cur.left)
-    #     else:   # 왼쪽, 오른쪽 둘다 있는 경우
-    #         replace = cur.left
-    #         replace = self.bst_max(replace)   # 대체할 노드를 찾음
-    #
-    #         if not replace.left and not replace.right:   # 대체할 노드가 리프 노드인 경우
-    #             if replace.parent.right == replace:
-    #                 replace.parent.right = None
-    #             else:
-    #                 replace.parent.left = None
-    #         else:   # 대체할 노드가 리프 노드가 아닌 경우(왼쪽 자식이 있는 경우)
-    #             self.make_right(replace.parent, replace.left)
-    #
-    #         cur.left.parent = replace
-    #         cur.right.parent = replace
-    #         self.make_left(replace, cur.left)
-    #         self.make_right(replace, cur.right)
-    def delete1(self, target):
-        self.root = self.__delete1(self.root, target)
-
     def __delete1(self, cur, target):
         if not cur:
             return None
-
-        if cur.key < target:
+        elif cur.key < target:
             new = self.__delete1(cur.right, target)
             self.make_right(cur, new)
         elif cur.key > target:
@@ -220,8 +177,8 @@ class BST:
                 self.make_left(cur, new)
         return cur
 
-
-
+    def delete1(self, target):
+        self.root = self.__delete1(self.root, target)
 
 
 if __name__ == "__main__":
@@ -244,7 +201,7 @@ if __name__ == "__main__":
     print()
     bst.levelorder_traversal(bst.get_root())
     print()
-    bst.delete1(6)   # delete에서 왼쪽, 오른쪽 자식 둘다있는 경우는 에러 발생
+    bst.delete1(6)
     bst.levelorder_traversal(bst.get_root())
     print()
 
