@@ -3,6 +3,7 @@
 # 데이터 조회 시 O(1)
 # 자동으로 크기를 조절하는 배열인 동적 배열이 파이썬에서는 리스트
 
+import sys
 from typing import *
 
 # 두 수의 합
@@ -93,7 +94,28 @@ def arrayPairsum(nums: List[int]) -> int:
 
 
 
+# 주식을 사고팔기 가장 좋은 시점
+# 1. 브루트 포스
+def maxProfit(prices: List[int]) -> int:
+    max_price = 0
 
+    for a in range(len(prices) - 1):
+        for b in range(a + 1, len(prices)):
+            max_price = max(max_price, prices[b] - prices[a])
+
+    return max_price
+
+
+# 2. 저점과 현재 값과의 차이 계산
+def maxProfit(prices: List[int]) -> int:
+    profit = 0
+    min_price = sys.maxsize   # 최대값으로 설정해야 쉽게 바로 교체됨
+
+    for price in prices:
+        min_price = min(min_price, price)
+        profit = max(profit, price - min_price)
+
+    return profit
 
 
 
