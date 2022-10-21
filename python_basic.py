@@ -28,6 +28,8 @@ print(next(e))   # StopIteration 예외 발생
 
 
 # generator : iterator를 생성해주는 함수로 yield 키워드 사용
+# 메모리 효율 측면에서 return 키워드를 사용하면 모든 결과값을 메모리에 올려놓아야하지만
+# yield 키워드를 사용하면 결과값을 하나씩 메모리에 올려놓기때문에 더 효울적
 def sample2():
     yield 1
     yield 2
@@ -141,7 +143,6 @@ print(s1.isalpha())
 # c = "zbqsga"
 # d = sorted(c)   # ["a", "b", "g", "q", "s", "z"]
 # e = "".join(sorted(c))   # 정렬 후 다시 문자열로 결합, "abgqsz"
-
 
 
 
