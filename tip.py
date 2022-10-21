@@ -39,5 +39,32 @@ tmp1 = ord("a")   # a의 아스키코드 값을 반환
 tmp2 = chr(tmp1)   # 아스키코드 값을 문자열로 반환
 
 
+# strip(), lstrip(), rstrip()은 특정 문자 제거
+tmp1 = "     hello"
+tmp1 = tmp1.strip()   # 공백 제거
+print(tmp1)
+
+tmp2 = "aaahello"
+tmp2 = tmp2.lstrip("a")
+print(tmp2)
+
+tmp3 = "helloaaa"
+tmp3 = tmp3.rstrip("a")
+print(tmp3)
 
 
+# 대소문자 관련
+s = "Hello"
+l = s.lower()   # 소문자로 변환
+print(l)
+u = s.upper()   # 대문자로 변환
+print(u)
+
+print(s.islower())   # 소문자인지 확인
+print(s.isupper())   # 대문자인지 확인
+
+
+# 문자열 교체
+s = "hello world"
+s = s.replace("hello", "hell")
+print(s)
