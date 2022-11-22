@@ -173,3 +173,59 @@ def swapPairs(self, head: Optional[ListNode]) -> Optional[ListNode]:
     return head
 
 
+# 2. 반복 구조로 스왑
+def swapPairs(self, head: Optional[ListNode]) -> Optional[ListNode]:
+    prev = root = ListNode()
+    prev.next = head
+
+    while head and head.next:
+        tmp = head.next
+        head.next = tmp.next
+        tmp.next = head
+
+        prev.next = tmp
+        prev = prev.next.next
+        head = head.next
+
+    return root.next
+
+
+
+# 홀짝 연결 리스트
+# 1. 반복 구조로 홀짝 노드 처리
+def oddEvenList(self, head: Optional[ListNode]) -> Optional[ListNode]:
+    if head is None:
+        return None
+
+    odd = head
+    even = even_head = head.next
+
+    while even and even.next:
+        odd.next = odd.next.next
+        even.next = even.next.next
+        odd = odd.next
+        even = even.next
+
+    odd.next = even_head
+    return head
+
+
+
+# 역순 연결 리스트2
+# 1. 반복 구조로 노드 뒤집기
+def reverseBetween(self, head: Optional[ListNode], left: int, right: int) -> Optional[ListNode]:
+    if not head.next:
+        return head
+    root = start = ListNode()
+    root.next = head
+
+    for _ in range(left - 1):
+        start = start.next
+    end = start.next
+
+    for _ in range(right - left):
+        tmp, start.next, end.next = start.next, end.next, end.next.next
+        start.next.next = tmp
+
+    return root.next
+
