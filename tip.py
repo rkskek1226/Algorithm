@@ -22,8 +22,14 @@ str_arr = [str(i) for i in int_arr]
 print(str_arr)
 
 
+# 리스트의 int형 원소들을 단일 값으로 병합하는 방법
+int_arr = [1, 2, 3]
+a = "".join(map(str, int_arr))
+print(a)
+
+
 # 제곱수의 약수의 개수는 홀수
-# 제곱수가 아닌 구수의 약수 개수는 짝수
+# 제곱수가 아닌 두 수의 약수 개수는 짝수
 
 
 # 리스트 2개의 원소들을 더하기
@@ -68,3 +74,16 @@ print(s.isupper())   # 대문자인지 확인
 s = "hello world"
 s = s.replace("hello", "hell")
 print(s)
+
+
+# 변수 스왑
+# 다중 할당 방식
+a = 10
+b = 20
+a, b = b, a
+
+# 숫자형인 경우 사용 가능한 방식
+a += b
+b = a - b
+a -= b
+
