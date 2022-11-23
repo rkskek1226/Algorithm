@@ -19,6 +19,23 @@ def isValid(self, s: str) -> bool:
 
 
 
+# 일일 온도
+# 1. 스택 값 비교
+def dailyTemperatures(self, temperatures: List[int]) -> List[int]:
+    answer = [0] * len(temperatures)
+    s = []
+
+    for i, cur in enumerate(temperatures):
+        while s and cur > temperatures[s[-1]]:
+            last = s.pop()
+            answer[last] = i - last
+
+        s.append(i)
+
+    return answer
+
+
+
 
 
 
