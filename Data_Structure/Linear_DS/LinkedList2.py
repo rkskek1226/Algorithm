@@ -56,7 +56,6 @@ def isPalindrome(self, head: Optional[ListNode]) -> bool:
     return not rev
 
 
-
 # 두 정렬 리스트의 병합
 def mergeTwoLists(self, list1: Optional[ListNode], list2: Optional[ListNode]) -> Optional[ListNode]:
     head = cursor = ListNode()
@@ -79,9 +78,8 @@ def mergeTwoLists(self, list1: Optional[ListNode], list2: Optional[ListNode]) ->
     return head.next
 
 
-
 # 역순 연결 리스트
-# 반복 구조로 뒤집기
+# 1. 반복 구조로 뒤집기
 def reverseList(self, head: Optional[ListNode]) -> Optional[ListNode]:
     prev = None
 
@@ -90,7 +88,6 @@ def reverseList(self, head: Optional[ListNode]) -> Optional[ListNode]:
         cursor.next, prev = prev, cursor
 
     return prev
-
 
 
 # 두 수의 덧셈
@@ -160,7 +157,6 @@ def addTwoNumbers(self, l1: Optional[ListNode], l2: Optional[ListNode]) -> Optio
     return head.next
 
 
-
 # 페어의 노드 스왑
 # 1. 단순히 값만 교환
 def swapPairs(self, head: Optional[ListNode]) -> Optional[ListNode]:
@@ -188,7 +184,6 @@ def swapPairs(self, head: Optional[ListNode]) -> Optional[ListNode]:
         head = head.next
 
     return root.next
-
 
 
 # 홀짝 연결 리스트
