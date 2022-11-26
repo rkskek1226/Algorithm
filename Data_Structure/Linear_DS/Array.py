@@ -24,7 +24,6 @@ def twoSum(nums: List[int], target: int) -> List[int]:
             return [nums.index(n), nums[i + 1:].index(tmp) + (i + 1)]
 
 
-
 # 세 수의 합
 # 1. 브루트 포스( O(n^3), 시간 제한 걸림 )
 def threeSum(nums: List[int]) -> List[List[int]]:
@@ -75,7 +74,6 @@ def threeSum(nums: List[int]) -> List[List[int]]:
     return result
 
 
-
 # 배열 파티션 1
 # 1. 오름차순 풀이
 def arrayPairSum(nums: List[int]) -> int:
@@ -91,7 +89,6 @@ def arrayPairSum(nums: List[int]) -> int:
 # 2. 파이썬다운 풀이
 def arrayPairsum(nums: List[int]) -> int:
     return sum(sorted(nums)[::2])
-
 
 
 # 주식을 사고팔기 가장 좋은 시점
