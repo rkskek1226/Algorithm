@@ -18,7 +18,6 @@ def isValid(self, s: str) -> bool:
     return len(l) == 0
 
 
-
 # 일일 온도
 # 1. 스택 값 비교
 def dailyTemperatures(self, temperatures: List[int]) -> List[int]:
