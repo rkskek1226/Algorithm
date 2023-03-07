@@ -87,3 +87,6 @@ a += b
 b = a - b
 a -= b
 
+# 중첩 리스트 생성
+l = [[] for _ in range(5)]
+
