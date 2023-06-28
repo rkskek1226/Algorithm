@@ -26,9 +26,12 @@ print("itertools.combinations_with_replacement(arr, 2) :", list(c))
 arr1 = ["A", "B", "C", "D"]
 arr2 = ["1", "2", "3", "4"]
 arr3 = [arr1, arr2]
+p = itertools.product(arr1, repeat=2)
+print("itertools.product(arr1, repeat=2) :", list(p))
 p = itertools.product(arr1, arr2)
 print("itertools.product(arr1, arr2) :", list(p))
 p = itertools.product("ABCD", "1234")
 print("itertools.product(\"ABCD\", \"1234\") :", list(p))
 p = itertools.product(*arr3)
 print("itertools.product(*arr3) :", list(p))
+
